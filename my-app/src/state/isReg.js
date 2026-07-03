@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { useNavigate } from "react-router";
-let navigate = useNavigate();
+// let navigate = useNavigate();
 export const isRegSlice = createSlice({
   name: 'counter',
   initialState: {
@@ -18,6 +18,6 @@ export const isRegSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {isValidate } = counterSlice.actions
+export const {isValidate } = isRegSlice.actions
 
 export default isRegSlice.reducer
