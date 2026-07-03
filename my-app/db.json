@@ -1,0 +1,48 @@
+{
+  "users": [
+    {
+      "firstname": "boob",
+      "email": "booob@gmail.com",
+      "password": "Bob@12345678",
+      "confirmPassword": "Bob@12345678",
+      "id": "wAZDj3cfJmI"
+    },
+    {
+      "firstname": "fake",
+      "email": "fake@mail.com",
+      "password": "FF@12345678a",
+      "confirmPassword": "FF@12345678a",
+      "id": "B7FFwB7Wtv0"
+    },
+    {
+      "firstname": "nona",
+      "email": "nona@gmail.com",
+      "password": "Nona@12345678",
+      "confirmPassword": "Nona@12345678",
+      "id": "tCTiCdCeIkw"
+    }
+  ],
+  "menu": [
+    {
+      "id": "1",
+      "path": "home",
+      "name": "მთავარი გვერდი"
+    },
+    {
+      "id": "2",
+      "path": "aboutUs",
+      "name": "ჩვენ შესახებ"
+    },
+    {
+      "id": "3",
+      "path": "login",
+      "name": "შესვლა"
+    },
+    {
+      "id": "4",
+      "path": "registration",
+      "name": "რეგისტრაცია"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
