@@ -5,7 +5,9 @@ import Registration from "./pages/Registration.jsx";
 import LogIn from "./pages/LogIn.jsx";
 import AboutUs from "./pages/AboutUs.jsx"
 import UserPage from "./pages/UserPage.jsx"
+import { useSelector, useDispatch } from 'react-redux'
 function NavRouters(){
+    const isAuth = useSelector((state) => state.isreg.value)
     return(
         <Routes>
             <Route path="/" element={<Layout/>}>
@@ -16,7 +18,7 @@ function NavRouters(){
                 <Route path="LogIn" element={<LogIn/>} /> */}
                 
             </Route>
-            <Route path="yourPage" element={<UserPage/>} />
+            <Route path="yourPage" element={isAuth?<UserPage/>:<Layout/>} />
         </Routes>
     )
 }

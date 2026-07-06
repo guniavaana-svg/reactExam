@@ -3,8 +3,13 @@ import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import {API_URL} from "../../config";
 import { useNavigate } from "react-router";
+import { useSelector, useDispatch } from 'react-redux'
+import {logIn ,logOut} from '../state/isReg'
+import { useEffect } from "react";
 
 function LogIn(){
+    const dispatch=useDispatch()
+    const isAuth = useSelector((state) => state.isreg.value)
     const regExp = {
         alphaBet: /^[a-zA-Zა-ჰ]+$/,
         phone: /^\+?\d{9,15}$/,
@@ -34,14 +39,15 @@ function LogIn(){
         }
         const res=await fetch(`${API_URL}/users?email=${formData.email}&password=${formData.password}`)
         const isUser=await res.json();
-        if(isUser.length>0){
-            console.log(isUser)
-            navigate("yourPage")
-        }else{
-            console.log("user is not registered")
-        }
+        isUser.length>0 && dispatch(logIn(true))
         resetForm();
     }
+    useEffect(()=>{
+        if(isAuth){
+        navigate("yourPage")
+        }
+    },[isAuth])
+    
     return(
         <Formik initialValues={{ 
             email: "",  

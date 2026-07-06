@@ -4,10 +4,11 @@ import { Formik, Form, Field } from 'formik';
 import {API_URL} from "../../config";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from 'react-redux'
-import { isValidate } from '../state/isReg'
+import {logIn ,logOut} from '../state/isReg'
 
 function Registration(){
-    const count = useSelector((state) => state.counter.value)
+    const navigate=useNavigate();
+    const isAuth = useSelector((state) => state.isreg.value)
     const dispatch = useDispatch()
     const regExp = {
         alphaBet: /^[a-zA-Zა-ჰ]+$/,
@@ -53,8 +54,8 @@ function Registration(){
                 body: JSON.stringify(formData)
             })
             const data=await rec.json()
-            console.log(data)
-            useDispatch(isValidate)
+            data.id && dispatch(logIn(true))
+            isAuth==true && navigate("yourPage")
         }else{
             console.log("user is registered and this is registered user:", isUser)
         }

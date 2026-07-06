@@ -1,23 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { useNavigate } from "react-router";
-// let navigate = useNavigate();
 export const isRegSlice = createSlice({
   name: 'counter',
   initialState: {
-    value: false,
+    value:JSON.parse(localStorage.getItem("isAuth")) ||false,
   },
   reducers: {
-    isValidate: (state, action) => {
-      if(state.value===true){
-            navigate("yourPage")
-      }else {
-        navigate("/")
-      }
+    logIn: (state, action) => {
+      state.value=action.payload
+      localStorage.setItem("isAuth",JSON.stringify(action.payload))
     },
+    logOut:(state,action)=>{
+      state.value=false
+      localStorage.setItem("isAuth", "false")
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {isValidate } = isRegSlice.actions
+export const {logIn ,logOut} = isRegSlice.actions
 
 export default isRegSlice.reducer
